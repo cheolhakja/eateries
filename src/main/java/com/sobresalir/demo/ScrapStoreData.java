@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 
 public class ScrapStoreData {
     public static void main(String[] args) throws InterruptedException {
@@ -29,6 +31,10 @@ public class ScrapStoreData {
             //업체수가 0이거나 잘못된 검색어를 입력해서 태그를 못찾는 경우
         }
 
+
+        List<WebElement> sortMethods = driver.findElements(By.xpath("//ol[@id = 'info.search.place.sort']/li/a"));
+        System.out.println("sortMethods.size() = " + sortMethods.size());
+        sortMethods.get(1).sendKeys(Keys.ENTER);
 
     }
 
