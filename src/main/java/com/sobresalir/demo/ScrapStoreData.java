@@ -2,10 +2,12 @@ package com.sobresalir.demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
+import java.util.Set;
 
 
 public class ScrapStoreData {
@@ -57,11 +59,57 @@ public class ScrapStoreData {
 
             //numberOfStores에 따른 페이지 넘기기 횟수 조절
             Thread.sleep(1000);
+
             viewMoreAboutStore.get(0).sendKeys(Keys.ENTER);
             viewMoreAboutStore.get(1).sendKeys(Keys.ENTER);
             viewMoreAboutStore.get(2).sendKeys(Keys.ENTER);
             viewMoreAboutStore.get(3).sendKeys(Keys.ENTER);
             viewMoreAboutStore.get(4).sendKeys(Keys.ENTER);
+
+            /*
+            for (int i = 0; i < 5; i++) {
+                viewMoreAboutStore.get(i).sendKeys(Keys.ENTER);
+                Thread.sleep(1000);
+                String windowHandle = driver.getWindowHandle();
+                driver.switchTo().window(windowHandle);
+                Thread.sleep(1000);
+                WebElement webElementReviewMore = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']/span[@class = 'txt_more']"));
+                webElementReviewMore.sendKeys(Keys.ENTER);
+                //후기가 적은 경우 예외처리
+                Thread.sleep(1000);
+            }
+
+             */
+            Set<String> windowHandles = driver.getWindowHandles();
+            List<String> windowHandleList = windowHandles.stream().toList();
+            driver.switchTo().window(windowHandleList.get(1));
+            Thread.sleep(6000);
+            WebElement element = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']"));
+            element.sendKeys(Keys.ENTER);
+            Thread.sleep(1000);
+
+            while(true) {
+                try {
+                    WebElement elementReviewMore = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']"));
+                    elementReviewMore.sendKeys(Keys.ENTER);
+                    Thread.sleep(1000);
+                } catch(org.openqa.selenium.NoSuchElementException e) {
+                    System.out.println("후기를 전부 펼쳤습니다");
+                    break;
+                }
+            }
+
+            //windowHandler
+            /*
+            Set<String> windowHandles = driver.getWindowHandles();
+            for (String windowHandle : windowHandles) {
+                System.out.println("windowHandle = " + windowHandle);
+            }
+            Object[] objects = windowHandles.toArray();
+
+             */
+
+
 
             /*
             System.out.println("viewMoreAboutStore.get(10). = " + viewMoreAboutStore.get(14));
