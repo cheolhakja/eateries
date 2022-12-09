@@ -83,7 +83,7 @@ public class ScrapStoreData {
             Set<String> windowHandles = driver.getWindowHandles();
             List<String> windowHandleList = windowHandles.stream().toList();
             driver.switchTo().window(windowHandleList.get(1));
-            Thread.sleep(6000);
+            Thread.sleep(3000);
             WebElement element = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']"));
             element.sendKeys(Keys.ENTER);
             Thread.sleep(1000);
@@ -98,6 +98,30 @@ public class ScrapStoreData {
                     break;
                 }
             }
+
+            List<WebElement> reviewsBeforeSize = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
+            System.out.println(1 + " : reviewsBefore.size() = " + reviewsBeforeSize.size());
+
+
+            //두번째 업체 댓글 추출
+            driver.switchTo().window(windowHandleList.get(2));
+            Thread.sleep(3000);
+            WebElement element2 = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']"));
+            element2.sendKeys(Keys.ENTER);
+            Thread.sleep(1000);
+
+            while(true) {
+                try {
+                    WebElement elementReviewMore = driver.findElement(By.xpath("//div[@id='kakaoWrap']/div[@id='kakaoContent']/div[@id='mArticle']/div[@data-viewid = 'comment']/div[@class='evaluation_review']/a[@class='link_more']"));
+                    elementReviewMore.sendKeys(Keys.ENTER);
+                    Thread.sleep(1000);
+                } catch(org.openqa.selenium.NoSuchElementException e) {
+                    System.out.println("후기를 전부 펼쳤습니다");
+                    break;
+                }
+            }
+            List<WebElement> reviewsBefore = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
+            System.out.println(2 + ": reviewsBefore.size() = " + reviewsBefore.size());
 
             //windowHandler
             /*
