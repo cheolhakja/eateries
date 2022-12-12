@@ -99,8 +99,8 @@ public class ScrapStoreData {
                 }
             }
 
-            List<WebElement> reviewsBeforeSize = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
-            System.out.println(1 + " : reviewsBefore.size() = " + reviewsBeforeSize.size());
+            List<WebElement> firstStoreComments = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
+            System.out.println(1 + " : reviewsBefore.size() = " + firstStoreComments.size());
 
 
             //두번째 업체 댓글 추출
@@ -120,34 +120,10 @@ public class ScrapStoreData {
                     break;
                 }
             }
-            List<WebElement> reviewsBefore = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
-            System.out.println(2 + ": reviewsBefore.size() = " + reviewsBefore.size());
-
-            //windowHandler
-            /*
-            Set<String> windowHandles = driver.getWindowHandles();
-            for (String windowHandle : windowHandles) {
-                System.out.println("windowHandle = " + windowHandle);
-            }
-            Object[] objects = windowHandles.toArray();
-
-             */
+            List<WebElement> secondStoreComments = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
+            System.out.println(2 + ": reviewsBefore.size() = " + secondStoreComments.size());
 
 
-
-            /*
-            System.out.println("viewMoreAboutStore.get(10). = " + viewMoreAboutStore.get(14));
-
-            String domAttribute = viewMoreAboutStore.get(0).getDomAttribute("href");
-            System.out.println("domAttribute = " + domAttribute);
-
-
-             */
-            //WebElement storeViewMoreButton = viewMoreAboutStore.get(0);
-            //storeViewMoreButton.sendKeys(Keys.ENTER);
-
-            //String winHandleBefore = driver.getWindowHandle();
-            //driver.switchTo().window(winHandleBefore);
 
         }
 
