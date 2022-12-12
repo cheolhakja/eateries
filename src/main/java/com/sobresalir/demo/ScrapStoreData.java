@@ -102,6 +102,12 @@ public class ScrapStoreData {
             List<WebElement> firstStoreComments = driver.findElements(By.xpath("//div[@class='comment_info']/p[@class='txt_comment']/span"));
             System.out.println(1 + " : reviewsBefore.size() = " + firstStoreComments.size());
 
+            Thread.sleep(1000);
+            for (int j = 0; j < 2; j++) {
+                System.out.println(firstStoreComments.get(j).getText());
+                Thread.sleep(1000);
+            }
+
 
             //두번째 업체 댓글 추출
             driver.switchTo().window(windowHandleList.get(2));
