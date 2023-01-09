@@ -38,7 +38,7 @@ public class FinalVerCommentRateTogether {
 
         }
 
-        for (int i = 0 + 2; i < 10 - 1; i++) { //+2와 -1을 알아보기 쉽게 refactor
+        for (int i = 0 + 2; i < 10 - 1; i++) { //+2와 -1을 알아보기 쉽게 refactor하기
             System.out.println("elements" + i + " = " +  starsSortedInOrder.get(i).getAttribute("style"));
             Thread.sleep(1000);
 
