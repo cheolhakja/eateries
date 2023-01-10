@@ -98,6 +98,27 @@ public class FinalVerCommentRateTogether {
         String substring = text2.substring(startIndex, lastIndex - 10);
         System.out.println("substring of text2 = " + substring);
 
+        System.out.println();
+
+        int cnt2 = 0;
+        int startIndex2 = 0;
+        int lastIndex2 = text1.length();
+        System.out.println("text1.length() = " + lastIndex2);
+        System.out.println("text1.charAt(lastIndex - 10) = " + text1.charAt(lastIndex2 - 10));
+        //substring은 lastIndex - 10을 인수로 넣어야됨. 나를 믿어
+        for (int i = 0; i < text1.length(); i++) {
+            if(text1.charAt(i) == '\n') {
+                cnt2++;
+                if(cnt2 == 6) {
+                    startIndex2 = i;
+                    break;
+                }
+
+            }
+
+        }
+        String substring2 = text1.substring(startIndex2, lastIndex2 - 10);
+        System.out.println("substring of text1 = " + substring2);
         //리스트에 추가 및 JSON직렬화
        /* List<RatingReviewData> list = new ArrayList<>();
         //elementTextReview ratingSorted
