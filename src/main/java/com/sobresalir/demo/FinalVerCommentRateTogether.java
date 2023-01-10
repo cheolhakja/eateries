@@ -25,21 +25,21 @@ public class FinalVerCommentRateTogether {
             }
         }
 
-        List<WebElement> starsSortedInOrder =driver.findElements(By.xpath("//span[@class = 'ico_star star_rate']/span"));
+        List<WebElement> ratingSorted =driver.findElements(By.xpath("//span[@class = 'ico_star star_rate']/span"));
         Thread.sleep(1000);
 
-        System.out.println("starsSortedInOrder.size() = " + starsSortedInOrder.size());
+        System.out.println("ratingSorted.size() = " + ratingSorted.size());
         Thread.sleep(1000);
 
 
         for (int i = 0; i < 10; i++) {
-            System.out.println("elements" + i + " = " +  starsSortedInOrder.get(i).getAttribute("style"));
+            System.out.println("elements" + i + " = " +  ratingSorted.get(i).getAttribute("style"));
             Thread.sleep(1000);
 
         }
 
         for (int i = 0 + 2; i < 10 - 1; i++) { //+2와 -1을 알아보기 쉽게 refactor하기
-            System.out.println("elements" + i + " = " +  starsSortedInOrder.get(i).getAttribute("style"));
+            System.out.println("elements" + i + " = " +  ratingSorted.get(i).getAttribute("style"));
             Thread.sleep(1000);
 
         }
@@ -56,6 +56,53 @@ public class FinalVerCommentRateTogether {
 
         }
 
+        //문자열 출력
+        String text1 = elementTextReview.get(3).getText();
+        String text2 = elementTextReview.get(4).getText();
+        for (int i = 0; i < text1.length(); i++) {
+            if(text1.charAt(i) == '\n') {
+                System.out.print(i + " = " + text1.charAt(i));
+            } else {
+                System.out.println(i + " = " + text1.charAt(i));
+            }
+        }
 
+        System.out.println();
+        for (int i = 0; i < text2.length(); i++) {
+            if(text2.charAt(i) == '\n') {
+                System.out.print(i + " = " + text2.charAt(i));
+            } else {
+                System.out.println(i + " = " + text2.charAt(i));
+            }
+        }
+
+
+        //문자열 분석
+        int cnt = 0;
+        int startIndex = 0;
+        int lastIndex = text2.length();
+        System.out.println("text2.length() = " + lastIndex);
+        System.out.println("text2.charAt(lastIndex - 10) = " + text2.charAt(lastIndex - 10));
+        //substring은 lastIndex - 10을 인수로 넣어야됨. 나를 믿어
+        for (int i = 0; i < text2.length(); i++) {
+            if(text2.charAt(i) == '\n') {
+                cnt++;
+                if(cnt == 6) {
+                    startIndex = i;
+                    break;
+                }
+
+            }
+            
+        }
+        String substring = text2.substring(startIndex, lastIndex - 10);
+        System.out.println("substring of text2 = " + substring);
+
+        //리스트에 추가 및 JSON직렬화
+       /* List<RatingReviewData> list = new ArrayList<>();
+        //elementTextReview ratingSorted
+        for (int i = 0; i < elementTextReview.size(); i++) {
+
+        }*/
     }
 }
