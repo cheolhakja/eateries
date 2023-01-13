@@ -9,4 +9,11 @@ public class ParseCommentFromTextDataTest {
         String parse = ParseCommentFromTextData.parse(s);
         System.out.println("parse = " + parse);
     }
+
+    @Test
+    public void 리뷰가_없고_별점만_남겼을때도_정상적으로_추출되는지_테스트() {
+        String s = "f1\n후기\n14\n별점평균\n3.9\n2022.11.19.\n좋아요\n메뉴 더보기";
+        String parse = ParseCommentFromTextData.parse(s);
+        System.out.println("parse = " + parse);
+    }
 }
