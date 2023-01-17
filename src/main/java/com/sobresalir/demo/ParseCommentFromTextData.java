@@ -36,5 +36,17 @@ public class ParseCommentFromTextData {
         return resultString2.toString();
     }
 
-
+    public static String eliminateSuffixOfViewMore(String text) {
+        int length = text.length();
+        String substring = text.substring(length - 14, length - 10);
+        if(substring.equals("더보기\n")) {
+            StringBuilder target = new StringBuilder(text);
+            StringBuilder resultString1 = target.deleteCharAt(length - 14);
+            StringBuilder resultString2 = target.deleteCharAt(length - 14);
+            StringBuilder resultString3 = target.deleteCharAt(length - 14);
+            StringBuilder resultString4 = target.deleteCharAt(length - 14);
+            return resultString4.toString();
+        }
+        return text;
+    }
 }
