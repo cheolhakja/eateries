@@ -1,5 +1,7 @@
 package com.sobresalir.demo;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ParseCommentFromTextDataTest {
@@ -16,4 +18,14 @@ public class ParseCommentFromTextDataTest {
         String parse = ParseCommentFromTextData.parse(s);
         System.out.println("parse = " + parse);
     }
+
+    @Test
+    @DisplayName("getText() 뒷부분 파싱")
+    public void 좋아요_더보기_같이있는경우() {
+        String s = "관록이 느껴져..\n더보기\n좋아요 2\n메뉴 더보기";
+        String s1 = ParseCommentFromTextData.eliminateSuffixOfLikeNumber(s);
+        Assertions.assertThat(s1).isEqualTo("관록이 느껴져..\n더보기\n좋아요\n메뉴 더보기");
+    }
+
+
 }
