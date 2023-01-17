@@ -49,4 +49,9 @@ public class ParseCommentFromTextData {
         }
         return text;
     }
+
+    public static String eliminateRestAllSuffix(String text) {
+        int length = text.length();
+        return text.substring(0, length - 11);
+    }
 }
