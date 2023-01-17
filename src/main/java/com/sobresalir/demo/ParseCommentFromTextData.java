@@ -19,4 +19,22 @@ public class ParseCommentFromTextData {
         }
         return text.substring(startIndex, lastIndex - 10);
     }
+
+    public static String eliminateSuffixOfLikeNumber(String text) {
+        int length = text.length();
+        char c = text.charAt(length - 8); //8을 상수로 지정
+
+        try {
+            int i = Integer.parseInt(String.valueOf(c)); //함수로 만들기: validateInteger 이런식으로
+        } catch(NumberFormatException e) {
+            return text;
+        }
+
+        StringBuilder target = new StringBuilder(text);
+        StringBuilder resultString = target.deleteCharAt(length - 8);
+        StringBuilder resultString2 = target.deleteCharAt(length - 9);
+        return resultString2.toString();
+    }
+
+
 }
