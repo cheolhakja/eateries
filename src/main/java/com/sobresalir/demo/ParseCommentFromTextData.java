@@ -81,8 +81,8 @@ public class ParseCommentFromTextData {
     }
 
     public static String doAll(String text) {
-        String s = ParseCommentFromTextData.removePrefix(text);
-        return ParseCommentFromTextData.removeSuffix(s);
+        String s = ParseCommentFromTextData.removeSuffix(text);
+        return ParseCommentFromTextData.removePrefix(s);
 
     }
 }
