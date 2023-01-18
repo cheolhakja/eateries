@@ -54,4 +54,11 @@ public class ParseCommentFromTextData {
         int length = text.length();
         return text.substring(0, length - 11);
     }
+
+    public static String removeSuffix(String text) {
+        String likeNumberRemovedString = ParseCommentFromTextData.eliminateSuffixOfLikeNumber(text);
+        String viewMoreRemovedString = ParseCommentFromTextData.eliminateSuffixOfViewMore(likeNumberRemovedString);
+        String resultString = ParseCommentFromTextData.eliminateRestAllSuffix(viewMoreRemovedString);
+        return resultString;
+    }
 }
