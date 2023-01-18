@@ -35,7 +35,13 @@ public class ParseCommentFromTextData {
             }
 
         }
-        return text.substring(startIndex + 1, lastIndex);
+        if(cnt == 6) {
+            return text.substring(startIndex + 1, lastIndex);
+        } else if(cnt == 5) {
+            return "";
+        } else {
+            return "";
+        }
     }
 
     public static String eliminateSuffixOfLikeNumber(String text) {
