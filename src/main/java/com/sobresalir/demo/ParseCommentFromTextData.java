@@ -35,7 +35,7 @@ public class ParseCommentFromTextData {
             }
 
         }
-        return text.substring(startIndex, lastIndex - 1);
+        return text.substring(startIndex + 1, lastIndex);
     }
 
     public static String eliminateSuffixOfLikeNumber(String text) {
