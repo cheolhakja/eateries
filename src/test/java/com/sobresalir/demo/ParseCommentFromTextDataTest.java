@@ -30,9 +30,9 @@ public class ParseCommentFromTextDataTest {
     @Test
     @DisplayName("getText() 뒷부분 파싱")
     public void 더보기만_있는경우() {
-        String s = "\n순대국 여기서만 먹어용 국물 진하고 맛잇음 ㅎㅎ\n더보기\n좋아요\n메뉴 더보기";
-        String s1 = ParseCommentFromTextData.eliminateSuffixOfViewMore(s);
-        Assertions.assertThat(s1).isEqualTo("\n순대국 여기서만 먹어용 국물 진하고 맛잇음 ㅎㅎ\n좋아요\n메뉴 더보기");
+        String stringBeforeParsed = "\n순대국 여기서만 먹어용 국물 진하고 맛잇음 ㅎㅎ\n더보기\n좋아요\n메뉴 더보기";
+        String stringAfterParsed = "\n순대국 여기서만 먹어용 국물 진하고 맛잇음 ㅎㅎ";
+        Assertions.assertThat(ParseCommentFromTextData.removeSuffix(stringBeforeParsed)).isEqualTo(stringAfterParsed);
     }
 
     @Test
