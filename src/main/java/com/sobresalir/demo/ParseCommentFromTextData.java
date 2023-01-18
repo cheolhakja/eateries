@@ -79,4 +79,10 @@ public class ParseCommentFromTextData {
         String resultString = ParseCommentFromTextData.eliminateRestAllSuffix(viewMoreRemovedString);
         return resultString;
     }
+
+    public static String doAll(String text) {
+        String s = ParseCommentFromTextData.removePrefix(text);
+        return ParseCommentFromTextData.removeSuffix(s);
+
+    }
 }
