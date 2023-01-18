@@ -42,4 +42,18 @@ public class ParseCommentFromTextDataTest {
         String stringAfterParsed = "\n순대국 여기서만 먹어용 국물 진하고 맛잇음 ㅎㅎ";
         Assertions.assertThat(ParseCommentFromTextData.removeSuffix(stringBeforeParsed)).isEqualTo(stringAfterParsed);
     }
+
+    @Test
+    @DisplayName("getText() 뒷부분 파싱")
+    public void 접두어_제거() {
+        String stringBeforeParsed = "청량\n" +
+                "후기\n" +
+                "104\n" +
+                "별점평균\n" +
+                "4.1\n" +
+                "2022.05.28.\n" +
+                "먹을텐데에 나온 맛집";
+        String stringAfterParsed = "먹을텐데에 나온 맛집";
+        Assertions.assertThat(ParseCommentFromTextData.removePrefix(stringBeforeParsed)).isEqualTo(stringAfterParsed);
+    }
 }
