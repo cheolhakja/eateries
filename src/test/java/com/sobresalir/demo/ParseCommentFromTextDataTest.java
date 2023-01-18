@@ -24,6 +24,7 @@ public class ParseCommentFromTextDataTest {
     public void 좋아요_더보기_같이있는경우() {
         String stringBeforeParsed = "관록이 느껴져..\n더보기\n좋아요 2\n메뉴 더보기";
         String stringAfterParsed = "관록이 느껴져..";
+        Assertions.assertThat(ParseCommentFromTextData.removeSuffix(stringBeforeParsed)).isEqualTo(stringAfterParsed);
     }
 
     @Test
