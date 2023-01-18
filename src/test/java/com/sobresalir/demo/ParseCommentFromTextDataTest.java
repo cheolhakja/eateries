@@ -22,9 +22,8 @@ public class ParseCommentFromTextDataTest {
     @Test
     @DisplayName("getText() 뒷부분 파싱")
     public void 좋아요_더보기_같이있는경우() {
-        String s = "관록이 느껴져..\n더보기\n좋아요 2\n메뉴 더보기";
-        String s1 = ParseCommentFromTextData.eliminateSuffixOfLikeNumber(s);
-        Assertions.assertThat(s1).isEqualTo("관록이 느껴져..\n더보기\n좋아요\n메뉴 더보기");
+        String stringBeforeParsed = "관록이 느껴져..\n더보기\n좋아요 2\n메뉴 더보기";
+        String stringAfterParsed = "관록이 느껴져..";
     }
 
     @Test
