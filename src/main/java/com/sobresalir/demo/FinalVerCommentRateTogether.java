@@ -12,7 +12,7 @@ public class FinalVerCommentRateTogether {
     public static void main(String[] args) throws InterruptedException { //예외 throw는 아는데 throws는 뭐지? 메인에서 throws하면 어디로 가냐
         System.setProperty("webdriver.chrome.driver","./chromedriver.exe");
         ChromeDriver driver = new ChromeDriver(); //크롬 브라우저를 연다
-        driver.get("https://place.map.kakao.com/10346328");
+        driver.get("https://place.map.kakao.com/2039472007");
         Thread.sleep(1000);
 
         while(true) {
@@ -61,8 +61,8 @@ public class FinalVerCommentRateTogether {
         }
 
         //문자열 출력
-        String text1 = elementTextReview.get(3).getText();
-        String text2 = elementTextReview.get(4).getText();
+        String text1 = elementTextReview.get(21).getText();
+        String text2 = elementTextReview.get(22).getText();
         for (int i = 0; i < text1.length(); i++) {
             if(text1.charAt(i) == '\n') {
                 System.out.print(i + " = " + text1.charAt(i));
@@ -129,6 +129,7 @@ public class FinalVerCommentRateTogether {
         for (int i = 0; i < elementTextReview.size(); i++) {
 
         }*/
+        System.out.println(elementTextReview.get(22).getText());
     }
 
     public static List<RatingReviewData> scrap() throws InterruptedException {
