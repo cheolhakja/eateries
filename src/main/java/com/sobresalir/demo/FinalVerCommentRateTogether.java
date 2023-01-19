@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FinalVerCommentRateTogether {
-    public static List<RatingReviewData> scrap() throws InterruptedException {
+    public static List<RatingReviewData> scrap(String url) throws InterruptedException {
         ChromeDriver driver = new ChromeDriver(); //크롬 브라우저를 연다
-        driver.get("https://place.map.kakao.com/10346328");
+        driver.get(url);
         Thread.sleep(1000);
 
         while(true) {

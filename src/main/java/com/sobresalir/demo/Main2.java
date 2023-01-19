@@ -12,9 +12,12 @@ import java.util.List;
 
 public class Main2 {
     public static void main(String[] args) throws InterruptedException {
-        List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap();
+        String url = "https://place.map.kakao.com/2039472007";
 
-        String storeName = Main2.getStoreName();
+        List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap(url);
+
+        String storeName = Main2.getStoreName(url);
+        String storeId = Main2.parseUrl(url);
 
         for (int i = 0; i < scrap.size(); i++) {
             String review = scrap.get(i).getReview();
@@ -51,12 +54,26 @@ public class Main2 {
         System.out.println("JSON file created: "+obj);
     }
 
-    public static String getStoreName() throws InterruptedException {
+    public static String getStoreName(String url) throws InterruptedException {
         ChromeDriver driver = new ChromeDriver(); //크롬 브라우저를 연다
-        driver.get("https://place.map.kakao.com/10346328");
+        driver.get(url);
         Thread.sleep(1000);
 
         WebElement elementStoreName = driver.findElement(By.xpath("//div[@class = 'inner_place']/h2[@class = 'tit_location']"));
         return elementStoreName.getText();
+    }
+
+    public static String parseUrl(String url) {
+        int length = url.length();
+        int cnt = 0;
+        int index = 0;
+        for (int i = 5; i < length; i++) {
+            if(url.charAt(i) == 'm' && url.charAt(i-1) == 'o' && url.charAt(i-2) == 'c') {
+                index = i;
+                break;
+            }
+        }
+        String storeId = url.substring(index + 2, url.length());
+        return storeId;
     }
 }
