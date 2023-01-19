@@ -15,12 +15,12 @@ class RatingReviewData {
         return rating;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
     public String getReview() {
         return review;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public void setReview(String review) {
