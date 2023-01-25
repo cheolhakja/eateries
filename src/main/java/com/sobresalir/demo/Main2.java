@@ -13,11 +13,15 @@ import java.util.List;
 public class Main2 {
     public static void main(String[] args) throws InterruptedException {
         String url = "https://place.map.kakao.com/2039472007";
+        String url2 = "https://place.map.kakao.com/730072757";
+        String url3 = "https://place.map.kakao.com/20943170";
+        String url4 = "https://place.map.kakao.com/385184723";
+        String url5 = "https://place.map.kakao.com/12435075";
 
-        List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap(url);
+        List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap(url5);
 
-        String storeName = Main2.getStoreName(url);
-        String storeId = Main2.parseUrl(url);
+        String storeName = Main2.getStoreName(url5);
+        String storeId = Main2.parseUrl(url5);
 
         for (int i = 0; i < scrap.size(); i++) {
             String review = scrap.get(i).getReview();
@@ -25,7 +29,7 @@ public class Main2 {
             scrap.get(i).setReview(result);
         }
 
-        Main2.serialize(scrap, storeName);
+        Main2.serialize(scrap, storeName + "-" + storeId);
     }
 
     private static void serialize(List<RatingReviewData> list, String storeName) {
@@ -44,7 +48,7 @@ public class Main2 {
         }
         obj.put("number", (i));
         try {
-            String fileName = "output-final" + storeName;
+            String fileName = "output-final" + "-" + storeName;
             FileWriter file = new FileWriter("C:\\Users\\IBK\\Desktop\\나만의-우테코\\kakaomap-data-scrap\\reviewdata\\second-trial\\" + fileName);
             file.write(obj.toJSONString());
             file.close();
