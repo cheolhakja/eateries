@@ -12,11 +12,11 @@ import java.util.List;
 
 public class Main2 {
     public static void main(String[] args) throws InterruptedException {
-        String url = "https://place.map.kakao.com/2039472007";
-        String url2 = "https://place.map.kakao.com/730072757";
-        String url3 = "https://place.map.kakao.com/20943170";
-        String url4 = "https://place.map.kakao.com/385184723";
-        String url5 = "https://place.map.kakao.com/12435075";
+        String url = "https://place.map.kakao.com/2039472007"; //호남식당
+        String url2 = "https://place.map.kakao.com/730072757"; //가재울순대
+        String url3 = "https://place.map.kakao.com/20943170"; //풍년순대
+        String url4 = "https://place.map.kakao.com/385184723"; //김둘레순대 상암2호점
+        String url5 = "https://place.map.kakao.com/12435075"; //상암순대 기사식당
 
         List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap(url5);
 
@@ -32,7 +32,7 @@ public class Main2 {
         Main2.serialize(scrap, storeName + "-" + storeId);
     }
 
-    private static void serialize(List<RatingReviewData> list, String storeName) {
+    public static void serialize(List<RatingReviewData> list, String storeName) {
         JSONObject obj = new JSONObject();
         int i;
 
@@ -50,6 +50,32 @@ public class Main2 {
         try {
             String fileName = "output-final" + "-" + storeName;
             FileWriter file = new FileWriter("C:\\Users\\IBK\\Desktop\\나만의-우테코\\kakaomap-data-scrap\\reviewdata\\second-trial\\" + fileName);
+            file.write(obj.toJSONString());
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("JSON file created: "+obj);
+    }
+
+    public static void serializeTestingData(List<RatingReviewData> list, String storeName) {
+        JSONObject obj = new JSONObject();
+        int i;
+
+        for (i = 0; i < list.size(); i++) {
+            JSONArray listJSON = new JSONArray();
+            String key1 = "rating" + (i + 1); //이펙티브 자바 문자열?
+            String key2 = "review" + (i + 1);
+            RatingReviewData ratingReviewData = list.get(i);
+            listJSON.add(ratingReviewData.getRating());
+            listJSON.add(ratingReviewData.getReview());
+            obj.put(key2, listJSON);
+
+        }
+        obj.put("number", (i));
+        try {
+            String fileName = "output-final" + "-" + storeName;
+            FileWriter file = new FileWriter("C:\\Users\\IBK\\Desktop\\나만의-우테코\\kakaomap-data-scrap\\reviewdata\\testing\\" + fileName);
             file.write(obj.toJSONString());
             file.close();
         } catch (IOException e) {

@@ -1,8 +1,7 @@
 package com.sobresalir.demo;
 
-class RatingReviewData {
+public class RatingReviewData {
 
-    //public 삭제
     private String rating;
     private String review;
 
