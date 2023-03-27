@@ -1,5 +1,7 @@
 package com.sobresalir.demo;
 
+import com.sobresalir.demo.store.Store;
+import com.sobresalir.demo.store.StoreList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
@@ -17,6 +19,14 @@ public class Main2 {
         String url3 = "https://place.map.kakao.com/20943170"; //풍년순대
         String url4 = "https://place.map.kakao.com/385184723"; //김둘레순대 상암2호점
         String url5 = "https://place.map.kakao.com/12435075"; //상암순대 기사식당
+
+        new StoreList(new Store("호남식당", "2039472007"),
+                new Store("가재울순대", "730072757"),
+                new Store("풍년순대", "20943170"),
+                new Store("김둘레순대 상암2호점", "385184723"),
+                new Store("상암순대 기사식당", "12435075"),
+                new Store("소문난순대국왕족발", "19011122"),
+                new Store("24시가마솥순대", "9654229"));
 
         List<RatingReviewData> scrap = FinalVerCommentRateTogether.scrap(url5);
 
